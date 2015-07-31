@@ -16,4 +16,6 @@ class SearchTests(object):
 
         # Capturamos todos los elementos que devuelve la busqueda
         products = driver.find_elements_by_css_selector(".product-name a")
+        
+        # hacemos la validacion
         assert 2 == len(products)
