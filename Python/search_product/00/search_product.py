@@ -1,21 +1,24 @@
 from selenium import webdriver
 
-class SearchTests(object):
 
-        driver = webdriver.Firefox()
-        # Navegamos hacia la aplicacion
-        driver.get("http://demo.magentocommerce.com/")
+driver = webdriver.Firefox()
+driver.maximize_window()
 
-        # Creamos el WebElement Search Field
-        search_field = driver.find_element_by_id("search")
+# Navegamos hacia la aplicacion
+driver.get("http://demo.magentocommerce.com/")
 
-        # Introducimos la busqueda
-        search_field.send_keys("phones")
-        search_field.submit()
-        # self.driver.find_element_by_class_name("search-button").click()
+# Creamos el WebElement Search Field
+search_field = driver.find_element_by_id("search")
 
-        # Capturamos todos los elementos que devuelve la busqueda
-        products = driver.find_elements_by_css_selector(".product-name a")
-        
-        # hacemos la validacion
-        assert 2 == len(products)
+# Introducimos la busqueda
+search_field.send_keys("phones")
+
+# Realizamos la busqueda
+search_field.submit()  # sin presionar el boton buscar
+# presionando buscar
+# driver.find_element_by_class_name("search-button").click()
+
+# Capturamos todos los elementos que devuelve la busqueda
+products = driver.find_elements_by_css_selector(".product-name a")
+
+assert 3 == len(products)
