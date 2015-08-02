@@ -11,7 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 // vemos como agregar implicit wait a los tests
 
-public class TestSimpleImplicitWait_05 {
+public class ImplicitWait_06 {
 
 	WebDriver driver;
 	
