@@ -9,8 +9,6 @@ import time
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import Select
 
-
-
 class DistintasAcciones(unittest.TestCase):
     def setUp(self):
         # Instanciar Firefox
@@ -89,7 +87,7 @@ class DistintasAcciones(unittest.TestCase):
         # hacemos hover para que aparezca el tooltip
         ActionChains(self.driver).move_to_element(age_field).perform()
 
-        # esperamos que aparezca el toolyip
+        # esperamos que aparezca el tooltip
         tool_tip_elm = WebDriverWait(self.driver, 10)\
             .until(expected_conditions.visibility_of_element_located((By.CLASS_NAME, "ui-tooltip-content")))
 
@@ -98,6 +96,8 @@ class DistintasAcciones(unittest.TestCase):
 
     def test_window_popup(self):
         driver = self.driver
+        
+        # Navegamos hasta la aplicacion
         driver.get("http://the-internet.herokuapp.com/windows")
 
         # Guardamos el nombre de la ventana actual para poder volver
@@ -118,6 +118,8 @@ class DistintasAcciones(unittest.TestCase):
 
     def test_alerts(self):
         driver = self.driver
+        
+        # Navegamos hasta la aplicacion
         driver.get("http://the-internet.herokuapp.com/javascript_alerts")
 
         # Hacemos click en el boton para JS Alert
@@ -135,9 +137,11 @@ class DistintasAcciones(unittest.TestCase):
         self.assertEqual("You successfuly clicked an alert", driver.find_element_by_id("result").text)
 
     def test_screen_shot(self):
-        # Navegamos hasta la aplicacion
-        self.driver.get("http://demo.magentocommerce.com/")
         driver = self.driver
+        
+        # Navegamos hasta la aplicacion
+        driver.get("http://demo.magentocommerce.com/")
+        
         
         # hacemos fallar el test para capturar la pantalla
         try:
