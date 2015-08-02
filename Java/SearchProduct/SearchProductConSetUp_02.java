@@ -10,7 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 // En este caso incluimos el Framework JUnit de Java para correr pruebas 
 // y agregar un setup a las mismas.
 
-public class SearchProductConSetUp_01 {
+public class SearchProductConSetUp_02 {
 
 	WebDriver driver;
 	
