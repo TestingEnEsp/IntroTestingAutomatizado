@@ -1,5 +1,3 @@
-package magento.searchproduct;
-
 import java.util.List;
 
 import org.junit.After;
