@@ -15,7 +15,7 @@ search_field.send_keys("phones")
 
 # Realizamos la busqueda
 search_field.submit()  # sin presionar el boton buscar
-# presionando buscar
+# presionando buscar seria asi
 # driver.find_element_by_class_name("search-button").click()
 
 # Capturamos todos los elementos que devuelve la busqueda
