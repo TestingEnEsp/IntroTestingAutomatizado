@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-# Vemos como funciona el explicit wait
+// Vemos como funciona el explicit wait
 
 public class ExplicitWait_07 {
 
