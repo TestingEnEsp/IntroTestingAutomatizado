@@ -28,6 +28,6 @@ public class SearchProduct_01 {
 		List<WebElement> products = driver.findElements(By.cssSelector(".product-name a"));
 		
 		// Validamos la cantidad de resultados devueltos
-		assert products.size() == 3;
+		assert products.size() == 2;
 	}
 }
