@@ -6,8 +6,8 @@ class BaseTestCase(unittest.TestCase):
 
     PLATFORM = 'WINDOWS'
     BROWSER = 'firefox'
-    SAUCE_USERNAME = 'TestingAutomatizado'
-    SAUCE_KEY = '24c25931-c16a-4f91-b8e3-d6e07af42735'
+    SAUCE_USERNAME = ''
+    SAUCE_KEY = ''
 
     def setUp(self):
         sauce_url = "http://" + self.SAUCE_USERNAME + ":" + self.SAUCE_KEY +"@ondemand.saucelabs.com:80/wd/hub"
