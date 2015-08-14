@@ -3,7 +3,7 @@ package pagebase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import sipageobject.SearchPage;
+import pagebase.SearchPage;
 
 public class HomePage extends PageBase{
 		
