@@ -2,8 +2,8 @@ package testbase;
 
 import org.junit.Test;
 
-import sipageobject.HomePage;
-import sipageobject.SearchPage;
+import testbase.HomePage;
+import testbase.SearchPage;
 
 public class TestSearchProduct extends TestBase{
 
