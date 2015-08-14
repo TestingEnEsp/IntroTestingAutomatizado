@@ -4,8 +4,6 @@ from selenium import webdriver
 
 class BaseTestCase(unittest.TestCase):
 
-    PLATFORM = 'WINDOWS'
-    BROWSER = 'firefox'
     SAUCE_USERNAME = ''
     SAUCE_KEY = ''
 
