@@ -22,4 +22,4 @@ search_field.submit()  # sin presionar el boton buscar
 products = driver.find_elements_by_css_selector(".product-name a")
 
 # Validamos la cantidad de resultados devueltos
-assert 3 == len(products)
+assert 2 == len(products), "2 != {0}".format(len(products))
