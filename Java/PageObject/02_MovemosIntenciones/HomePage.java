@@ -1,9 +1,9 @@
-package sipageobject;
+package movemosintenciones_02;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import sipageobject.SearchPage;
+import movemosintenciones_02.SearchPage;
 
 public class HomePage {
 	
