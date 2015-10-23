@@ -18,14 +18,14 @@ public class CrossBrowsing_08 {
 	public void SetUp() {
 		// Le indicamos donde se ubica el chromedriver.exe 
 		System.setProperty("webdriver.chrome.driver", 
-				"/opt/pythonenv/WebDriver/introTestingAutomatizado/search_product/search_product/chromedriver.exe");
+				"/opt/pythonenv/WebDriver/introTestingAutomatizado/search_product/search_product/chromedriver");
 		// Instanciamos Chrome
 		driver = new ChromeDriver();
 
 		// Para el caso de IE, seria asi
 		// Le indicamos donde se ubica el IeDriver.exe 
 		//System.setProperty("webdriver.internetexplorer.driver", 
-				"/opt/pythonenv/WebDriver/introTestingAutomatizado/search_product/search_product/internetexplorer.exe");
+		//		"/opt/pythonenv/WebDriver/introTestingAutomatizado/search_product/search_product/internetexplorer.exe");
 		// Instanciamos IE
 		// driver = new InternetExplorerDriver()
 
