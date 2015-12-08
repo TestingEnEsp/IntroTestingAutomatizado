@@ -1,3 +1,5 @@
+package magento.searchproduct;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,9 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-// Vemos como funciona el explicit wait
-
-public class ExplicitWait_07 {
+public class TestSimpleExplicitWait_06 {
 
 	WebDriver driver;
 	
@@ -18,43 +18,25 @@ public class ExplicitWait_07 {
 	public void SetUp() {
 		driver = new FirefoxDriver();
 		driver.manage().window().maximize();
-		driver.get("http://demo.magentocommerce.com/");
+		driver.get("http://www.mercadolibre.com.ar/");
 	}
 	
 	@Test
-	public void testAcountLink() {
-
-		// Capturamos el elemento account cuando se cumple la condicion de que esta visible
-		WebElement account = (new WebDriverWait(driver, 10))
-				  .until(ExpectedConditions.visibilityOfElementLocated(By.className("skip-account")));
+	public void testSuggestions() {
+		// Creamos el WebElement Search Field
+		WebElement searchField = driver.findElement(By.id("query"));
 		
-		account.click();
+		// Introducimos la busqueda
+		searchField.sendKeys("tele");
+
+		WebElement suggestions = (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(By.id("ac-popover-2")));
+		
+		suggestions.findElement(By.className("ac-autocomplete-item")).click();
+		
 	}
 	
-
-	@Test
-	public void testCreateNewCustomer() {
-
-		// Hacemos click en Account para habilitar el link de Login
-		driver.findElement(By.className("skip-account")).click();
-
-		// Esperamos por el link y le hacemos click
-		WebElement myAccount = (new WebDriverWait(driver, 10))
-				  .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#header-account .first a")));
-		myAccount.click();
-		
-		// Capturamos el webelement Create account
-		WebElement createAccountButton = (new WebDriverWait(driver, 10))
-				  .until(ExpectedConditions.elementToBeClickable(By.cssSelector(".button[title='Create an Account']")));
-		
-		// Hacemos click y esperamos por el titulo de la pagina
-		createAccountButton.click();
-		(new WebDriverWait(driver, 10)).until(ExpectedConditions.titleContains("Create New Customer Account"));
-	}
-
 	@After
 	public void TearDown() {
 		driver.quit();
 	}
-
 }
