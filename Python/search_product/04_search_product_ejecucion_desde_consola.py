@@ -30,3 +30,8 @@ class SearchTests(unittest.TestCase):
     def tearDown(self):
         # Cerramos el navegador
         self.driver.quit()
+
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)
+
