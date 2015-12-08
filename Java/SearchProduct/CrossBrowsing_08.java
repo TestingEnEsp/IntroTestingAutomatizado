@@ -1,3 +1,4 @@
+package magento.searchproduct;
 import java.util.List;
 
 import org.junit.After;
@@ -10,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 // Vemos como configurar el test para correr otros browsers en forma local
 
-public class CrossBrowsing_08 {
+public class TestSimpleCrossBrowsing_07 {
 		
 	WebDriver driver;
 	
@@ -30,22 +31,27 @@ public class CrossBrowsing_08 {
 		// driver = new InternetExplorerDriver()
 
 		driver.manage().window().maximize();
-		driver.get("http://demo.magentocommerce.com/");
+		driver.get("http://www.mercadolibre.com.ar/");
 	}
 	
 	@Test
 	public void testSearchByCategory() {
-
-		WebElement searchField = driver.findElement(By.id("search"));
+		// Creamos el WebElement Search Field
+		WebElement searchField = driver.findElement(By.id("query"));
 		
-		searchField.sendKeys("phones");
+		// Introducimos la busqueda
+		searchField.sendKeys("telefonos");
 		
-		searchField.submit();
-		//driver.findElement(By.className("search-button")).click();
+		// Realizamos la busqueda
+		searchField.submit(); // sin presionar el boton buscar
+		// presionando buscar seria asi
+		//driver.findElement(By.className("nav-search-btn.ml-search-btn")).click();
 		
-		List<WebElement> products = driver.findElements(By.cssSelector(".product-name a"));
+		//Capturamos todos los elementos que devuelve la busqueda
+		List<WebElement> products = driver.findElements(By.cssSelector("#searchResults>li"));
 		
-		assert products.size() == 2;
+		// Validamos la cantidad de resultados devueltos
+		assert products.size() == 50;
 	}
 	
 	@After
