@@ -9,6 +9,7 @@ import time
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import Select
 
+
 class DistintasAcciones(unittest.TestCase):
     def setUp(self):
         # Instanciar Firefox
@@ -33,71 +34,55 @@ class DistintasAcciones(unittest.TestCase):
         # ejecutamos las acciones de arrastrar y soltar
         ActionChains(self.driver).drag_and_drop(source, target).perform()
 
-        # validamos que se realizo el drag and drop en forma exitosa
         self.assertEqual("Dropped!", target.text)
 
     def test_dropdown_selection(self):
         # Navegamos hasta la aplicacion
-        self.driver.get("http://demo.magentocommerce.com/")
+        self.driver.get("http://the-internet.herokuapp.com/dropdown")
 
-        # generamos el elements select
-        select = Select(self.driver.find_element_by_id("select-language"))
+        select = Select(self.driver.find_element_by_id("dropdown"))
 
-        # utilizamos el elemento select para seleccionar por valor visible
-        select.select_by_visible_text("German")
+        select.select_by_visible_text("Option 2")
 
     def test_double_click(self):
         # Navegamos hasta la aplicacion
         self.driver.get("http://api.jquery.com/dblclick/")
-        
-        # cambiamos el foco al frame
         frame = self.driver.find_element_by_tag_name("iframe")
         self.driver.switch_to.frame(frame)
-        
-        # capturamos el elemento
         box = self.driver.find_element_by_tag_name("div")
 
-        # verificamos que la caja es azul
+        # verify color is Blue
         self.assertEqual("rgba(0, 0, 255, 1)",
                          box.value_of_css_property("background-color"))
-        
-        # Nos posicionamos sobre el elemento
+
         ActionChains(self.driver).\
-            move_to_element(self.driver.find_element_by_tag_name("span")).perform()
-        
-        # realizamos el doble click    
+            move_to_element(self.driver.find_element_by_tag_name("span"))\
+            .perform()
         ActionChains(self.driver).double_click(box).perform()
 
-        # verificamos que cambio de color a amarillo por el doble click
+        # verify Color is Yellow
         self.assertEqual("rgba(255, 255, 0, 1)",
                          box.value_of_css_property("background-color"))
 
     def test_tool_tip(self):
         # Navegamos hasta la aplicacion
         self.driver.get("http://jqueryui.com/tooltip/")
+
         driver = self.driver
-        
-        # cambiamos de foco al iframe
         frame_elm = driver.find_element_by_class_name("demo-frame")
         driver.switch_to.frame(frame_elm)
 
-        # capturamos la caja donde vamos a hacer hover
         age_field = driver.find_element_by_id("age")
-        
-        # hacemos hover para que aparezca el tooltip
         ActionChains(self.driver).move_to_element(age_field).perform()
 
-        # esperamos que aparezca el tooltip
         tool_tip_elm = WebDriverWait(self.driver, 10)\
             .until(expected_conditions.visibility_of_element_located((By.CLASS_NAME, "ui-tooltip-content")))
 
-        # verificamos el mensaje del tooltip
+        # verificamos el mensaje
         self.assertEqual("We ask for your age only for statistical purposes.", tool_tip_elm.text)
 
     def test_window_popup(self):
         driver = self.driver
-        
-        # Navegamos hasta la aplicacion
         driver.get("http://the-internet.herokuapp.com/windows")
 
         # Guardamos el nombre de la ventana actual para poder volver
@@ -106,20 +91,12 @@ class DistintasAcciones(unittest.TestCase):
         # Abrimos una nueva ventana
         link = driver.find_element_by_link_text("Click Here")
         link.click()
-        
-        # Cambiamos el foco hacia la nueva ventana
         driver.switch_to.window(driver.window_handles[-1])
-        
-        # Cerramos la ventana
         driver.close()
-        
-        # Cambiamos el foco a la primer ventana
         driver.switch_to.window(parent_window_id)
 
     def test_alerts(self):
         driver = self.driver
-        
-        # Navegamos hasta la aplicacion
         driver.get("http://the-internet.herokuapp.com/javascript_alerts")
 
         # Hacemos click en el boton para JS Alert
@@ -137,13 +114,9 @@ class DistintasAcciones(unittest.TestCase):
         self.assertEqual("You successfuly clicked an alert", driver.find_element_by_id("result").text)
 
     def test_screen_shot(self):
-        driver = self.driver
-        
         # Navegamos hasta la aplicacion
-        driver.get("http://demo.magentocommerce.com/")
-        
-        
-        # hacemos fallar el test para capturar la pantalla
+        self.driver.get("http://www.mercadolibre.com.ar/")
+        driver = self.driver
         try:
             promo_banner_elem = driver.find_element_by_id("promo_banner")
             self.assertEqual("Promotions", promo_banner_elem.text)
