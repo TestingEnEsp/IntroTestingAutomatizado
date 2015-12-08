@@ -11,23 +11,23 @@ public class SearchProduct_01 {
 		driver.manage().window().maximize();
 		
 		// Navegamos hacia la aplicacion
-		driver.get("http://demo.magentocommerce.com/");
+		driver.get("http://www.mercadolibre.com.ar/");
 		
 		// Creamos el WebElement Search Field
-		WebElement searchField = driver.findElement(By.id("search"));
+		WebElement searchField = driver.findElement(By.id("query"));
 		
 		// Introducimos la busqueda
-		searchField.sendKeys("phones");
+		searchField.sendKeys("telefonos");
 		
 		// Realizamos la busqueda
 		searchField.submit(); // sin presionar el boton buscar
 		// presionando buscar seria asi
-		//driver.findElement(By.className("search-button")).click();
+		//driver.findElement(By.className("nav-search-btn.ml-search-btn")).click();
 		
 		//Capturamos todos los elementos que devuelve la busqueda
-		List<WebElement> products = driver.findElements(By.cssSelector(".product-name a"));
+		List<WebElement> products = driver.findElements(By.cssSelector("#searchResults>li"));
 		
 		// Validamos la cantidad de resultados devueltos
-		assert products.size() == 2;
+		assert products.size() == 50;
 	}
 }
