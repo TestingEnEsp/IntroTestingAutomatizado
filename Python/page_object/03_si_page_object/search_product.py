@@ -2,6 +2,7 @@ import unittest
 from selenium import webdriver
 from home_page import HomePage
 
+
 class SearchTests(unittest.TestCase):
     def setUp(self):
         # Instanciar Firefox
@@ -9,42 +10,17 @@ class SearchTests(unittest.TestCase):
         self.driver.maximize_window()
 
         # Navegamos hasta la aplicacion
-        self.driver.get("http://demo.magentocommerce.com/")
+        self.driver.get("http://www.mercadolibre.com.ar/")
 
     def test_search_by_category(self):
+        # Instanciamos la Home Page
         home_page = HomePage(self.driver)
-        results_page = home_page.search_for("phones")
-
-        self.assertEqual(2, results_page.get_cant_resultados())
-
-    def test_search_by_product(self):
-        # Creamos el WebElement Search Field
-        self.search_field = self.driver.find_element_by_id("search")
-        # Introducimos la busqueda
-        self.search_field.send_keys("Oxford")
-        self.search_field.submit()
-        # self.driver.find_element_by_class_name("search-button").click()
-
-        # Capturamos todos los elementos que devuelve la busqueda
-        products = self.driver.find_elements_by_css_selector(".product-name a")
-        self.assertEqual(3, len(products))
-
-    def test_no_results(self):
-        # Creamos el WebElement Search Field
-        self.search_field = self.driver.find_element_by_id("search")
-        # Introducimos la busqueda
-        self.search_field.send_keys("accesories")
-        self.search_field.submit()
-        # self.driver.find_element_by_class_name("search-button").click()
-
-        # Capturamos todos los elementos que devuelve la busqueda
-        products = self.driver.find_elements_by_css_selector(".product-name a")
-        self.assertEqual(0, len(products))
+        # Hacemos la busqueda desde la Home Page. Esta busqueda nos devuelve una Results Page
+        results_page = home_page.search_for("telefonos")
+        
+        # Verificamos la cantidad de resultados
+        self.assertEqual(50, results_page.get_cant_resultados())
 
     def tearDown(self):
         # Cerramos el navegador
         self.driver.quit()
-
-
-if __name__ == '__main__':
-    unittest.main(verbosity=2)
