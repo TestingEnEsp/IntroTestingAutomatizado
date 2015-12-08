@@ -1,3 +1,5 @@
+package magento.searchproduct;
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -9,9 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-// vemos como agregar implicit wait a los tests
-
-public class ImplicitWait_06 {
+public class TestSimpleImplicitWait_05 {
 
 	WebDriver driver;
 	
@@ -20,50 +20,48 @@ public class ImplicitWait_06 {
 		driver = new FirefoxDriver();
 		driver.manage().window().maximize();
 		
-		// Definimos el Implicit Wait con una espera de 30s
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
-		// Navegamos hasta la aplicacion
-		driver.get("http://demo.magentocommerce.com/");
+		driver.get("http://www.mercadolibre.com.ar/");
 	}
 	
 	@Test
 	public void testSearchByCategory() {
-
 		// Creamos el WebElement Search Field
-		WebElement searchField = driver.findElement(By.id("search"));
+		WebElement searchField = driver.findElement(By.id("query"));
 		
 		// Introducimos la busqueda
-		searchField.sendKeys("phones");
+		searchField.sendKeys("telefonos");
 		
-		// Realizamos la busqueda 
-		searchField.submit();
-		//driver.findElement(By.className("search-button")).click();
+		// Realizamos la busqueda
+		searchField.submit(); // sin presionar el boton buscar
+		// presionando buscar seria asi
+		//driver.findElement(By.className("nav-search-btn.ml-search-btn")).click();
 		
-		// Capturamos todos los elementos que devuelve la busqueda
-		List<WebElement> products = driver.findElements(By.cssSelector(".product-name a"));
+		//Capturamos todos los elementos que devuelve la busqueda
+		List<WebElement> products = driver.findElements(By.cssSelector("#searchResults>li"));
 		
-		// Validamos el resultado
-		assert products.size() == 2;
+		// Validamos la cantidad de resultados devueltos
+		assert products.size() == 50;
 	}
 	
 	@Test
 	public void testSearchByName() {
-
 		// Creamos el WebElement Search Field
-		WebElement searchField = driver.findElement(By.id("search"));
+		WebElement searchField = driver.findElement(By.id("query"));
 		
 		// Introducimos la busqueda
-		searchField.sendKeys("salt shaker");
+		searchField.sendKeys("software testing: fundamental principles and essential know");
 		
 		// Realizamos la busqueda
-		searchField.submit();
-		//driver.findElement(By.className("search-button")).click();
+		searchField.submit(); // sin presionar el boton buscar
+		// presionando buscar seria asi
+		//driver.findElement(By.className("nav-search-btn.ml-search-btn")).click();
 		
-		// Capturamos todos los elementos que devuelve la busqueda
-		List<WebElement> products = driver.findElements(By.cssSelector(".product-name a"));
+		//Capturamos todos los elementos que devuelve la busqueda
+		List<WebElement> products = driver.findElements(By.cssSelector("#searchResults>li"));
 		
-		// Validamos el resultado
+		// Validamos la cantidad de resultados devueltos
 		assert products.size() == 1;
 	}
 	
@@ -71,4 +69,5 @@ public class ImplicitWait_06 {
 	public void TearDown() {
 		driver.quit();
 	}
+
 }
