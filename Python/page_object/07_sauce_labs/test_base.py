@@ -4,6 +4,7 @@ from selenium import webdriver
 
 class BaseTestCase(unittest.TestCase):
 
+    # Estos datos deben ser extraidos de nuestra cuenta en SauceLabs
     SAUCE_USERNAME = ''
     SAUCE_KEY = ''
 
@@ -16,7 +17,7 @@ class BaseTestCase(unittest.TestCase):
                                 }
 
         self.driver = webdriver.Remote(desired_capabilities=desired_capabilities, command_executor=sauce_url)
-        self.driver.get('http://demo.magentocommerce.com/')
+        self.driver.get("http://www.mercadolibre.com.ar/")
         self.driver.maximize_window()
 
     def tearDown(self):
