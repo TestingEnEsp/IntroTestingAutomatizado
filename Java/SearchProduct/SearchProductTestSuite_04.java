@@ -1,3 +1,5 @@
+package magento.searchproduct;
+
 import java.util.List;
 
 import org.junit.After;
@@ -8,9 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-// Agregamos otro test para formar la suite de pruebas
-
-public class SearchProductTestSuite_04 {
+public class TestSimpleOtroTest_04 {
 
 	WebDriver driver;
 	
@@ -18,53 +18,52 @@ public class SearchProductTestSuite_04 {
 	public void SetUp() {
 		driver = new FirefoxDriver();
 		driver.manage().window().maximize();
-		// Navegamos hasta la aplicacion
-		driver.get("http://demo.magentocommerce.com/");
+		driver.get("http://www.mercadolibre.com.ar/");
 	}
 	
 	@Test
 	public void testSearchByCategory() {
-
 		// Creamos el WebElement Search Field
-		WebElement searchField = driver.findElement(By.id("search"));
+		WebElement searchField = driver.findElement(By.id("query"));
 		
 		// Introducimos la busqueda
-		searchField.sendKeys("phones");
+		searchField.sendKeys("telefonos");
 		
-		// realizamos la busqueda
-		searchField.submit();
-		//driver.findElement(By.className("search-button")).click();
+		// Realizamos la busqueda
+		searchField.submit(); // sin presionar el boton buscar
+		// presionando buscar seria asi
+		//driver.findElement(By.className("nav-search-btn.ml-search-btn")).click();
 		
-		// Capturamos todos los elementos que devuelve la busqueda
-		List<WebElement> products = driver.findElements(By.cssSelector(".product-name a"));
+		//Capturamos todos los elementos que devuelve la busqueda
+		List<WebElement> products = driver.findElements(By.cssSelector("#searchResults>li"));
 		
-		// validamos el resultado
-		assert products.size() == 2;
+		// Validamos la cantidad de resultados devueltos
+		assert products.size() == 50;
 	}
 	
 	@Test
 	public void testSearchByName() {
-
 		// Creamos el WebElement Search Field
-		WebElement searchField = driver.findElement(By.id("search"));
+		WebElement searchField = driver.findElement(By.id("query"));
 		
 		// Introducimos la busqueda
-		searchField.sendKeys("salt shaker");
+		searchField.sendKeys("software testing: fundamental principles and essential know");
 		
-		// realizamos la busqueda
-		searchField.submit();
-		//driver.findElement(By.className("search-button")).click();
+		// Realizamos la busqueda
+		searchField.submit(); // sin presionar el boton buscar
+		// presionando buscar seria asi
+		//driver.findElement(By.className("nav-search-btn.ml-search-btn")).click();
 		
-		// Capturamos todos los elementos que devuelve la busqueda
-		List<WebElement> products = driver.findElements(By.cssSelector(".product-name a"));
+		//Capturamos todos los elementos que devuelve la busqueda
+		List<WebElement> products = driver.findElements(By.cssSelector("#searchResults>li"));
 		
-		// validamos el resultado
+		// Validamos la cantidad de resultados devueltos
 		assert products.size() == 1;
 	}
+	
 	
 	@After
 	public void TearDown() {
 		driver.quit();
 	}
-
 }
