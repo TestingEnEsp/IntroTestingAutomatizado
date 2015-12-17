@@ -6,8 +6,8 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import sipageobject.HomePage;
-import sipageobject.SearchPage;
+import 04_MasTests.HomePage;
+import 04_MasTests.SearchPage;
 
 public class TestSearchProduct {
 
