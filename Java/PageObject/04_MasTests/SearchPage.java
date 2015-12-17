@@ -1,4 +1,4 @@
-package mastests;
+package 04_Mas_Tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +12,7 @@ public class SearchPage {
 	}
 	
 	public int getCantResultados(){
-		return this._driver.findElements(By.cssSelector(".product-name a")).size();
+		return this._driver.findElements(By.cssSelector("#searchResults>li")).size();
 	}
 
 }
