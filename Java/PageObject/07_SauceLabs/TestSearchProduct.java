@@ -1,41 +1,30 @@
-package saucelabs;
+package 07_SauceLabs;
 
 import org.junit.Test;
 
-import sipageobject.HomePage;
-import sipageobject.SearchPage;
+import 07_SauceLabs.HomePage;
+import 07_SauceLabs.SearchPage;
 
 public class TestSearchProduct extends TestBase{
 
-	
 	@Test
 	public void testSearchByCategory() {
 
 		HomePage homePage = new HomePage(driver);
 		
-		SearchPage searchPage = homePage.searchFor("phones");
+		SearchPage searchPage = homePage.searchFor("telefonos");
 		
-		assert 2 == searchPage.getCantResultados();
+		assert 50 == searchPage.getCantResultados();
 	}
 
 	@Test
-	public void testSearchByProduct() {
+	public void testSearchByName() {
 
 		HomePage homePage = new HomePage(driver);
 		
-		SearchPage searchPage = homePage.searchFor("Oxford");
+		SearchPage searchPage = homePage.searchFor("software testing: fundamental principles and essential know");
 		
-		assert 3 == searchPage.getCantResultados();
-	}
-
-	@Test
-	public void testNoResults() {
-
-		HomePage homePage = new HomePage(driver);
-		
-		SearchPage searchPage = homePage.searchFor("accesories");
-		
-		assert 0 == searchPage.getCantResultados();
+		assert 1 == searchPage.getCantResultados();
 	}
 
 }
