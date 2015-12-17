@@ -3,7 +3,7 @@ package 05_TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import pagebase.SearchPage;
+import 05_TestBase.SearchPage;
 
 public class HomePage {
 	
