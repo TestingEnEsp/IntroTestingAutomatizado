@@ -17,54 +17,38 @@ public class TestSearchProduct {
 	public void SetUp() {
 		driver = new FirefoxDriver();
 		driver.manage().window().maximize();
-		driver.get("http://demo.magentocommerce.com/");
+		driver.get("http://www.mercadolibre.com.ar/");
 	}
 	
 	@Test
 	public void testSearchByCategory() {
 
-		WebElement searchField = driver.findElement(By.id("search"));
+		WebElement searchField = driver.findElement(By.id("query"));
 		
-		searchField.sendKeys("phones");
+		searchField.sendKeys("telefonos");
 		
 		searchField.submit();
-		//driver.findElement(By.className("search-button")).click();
+		//driver.findElement(By.className("nav-search-btn.ml-search-btn")).click();
 		
-		List<WebElement> products = driver.findElements(By.cssSelector(".product-name a"));
+		List<WebElement> products = driver.findElements(By.cssSelector("#searchResults>li"));
 		
-		assert products.size() == 2;
+		assert products.size() == 50;
 	}
 
 	@Test
-	public void testSearchByProduct() {
+	public void testSearchByName() {
 
-		WebElement searchField = driver.findElement(By.id("search"));
+		WebElement searchField = driver.findElement(By.id("query"));
 		
-		searchField.sendKeys("Oxford");
+		searchField.sendKeys("software testing: fundamental principles and essential know");
 		
 		searchField.submit();
-		//driver.findElement(By.className("search-button")).click();
+		//driver.findElement(By.className("nav-search-btn.ml-search-btn")).click();
 		
-		List<WebElement> products = driver.findElements(By.cssSelector(".product-name a"));
+		List<WebElement> products = driver.findElements(By.cssSelector("#searchResults>li"));
 		
-		assert products.size() == 2;
+		assert products.size() == 1;
 	}
-
-	@Test
-	public void testNoResults() {
-
-		WebElement searchField = driver.findElement(By.id("search"));
-		
-		searchField.sendKeys("accesories");
-		
-		searchField.submit();
-		//driver.findElement(By.className("search-button")).click();
-		
-		List<WebElement> products = driver.findElements(By.cssSelector(".product-name a"));
-		
-		assert products.size() == 0;
-	}
-
 	
 	@After
 	public void TearDown() {
