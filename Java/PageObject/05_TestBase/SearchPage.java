@@ -1,4 +1,4 @@
-package testbase;
+package 05_TestBase;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
