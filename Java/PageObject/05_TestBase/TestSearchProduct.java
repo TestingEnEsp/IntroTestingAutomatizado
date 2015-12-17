@@ -2,8 +2,8 @@ package 05_TestBase;
 
 import org.junit.Test;
 
-import testbase.HomePage;
-import testbase.SearchPage;
+import 05_TestBase.HomePage;
+import 05_TestBase.SearchPage;
 
 public class TestSearchProduct extends TestBase{
 
