@@ -1,9 +1,9 @@
-package pagebase;
+package 06_PageBase;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import pagebase.SearchPage;
+import 06_PageBase.SearchPage;
 
 public class HomePage extends PageBase{
 		
@@ -12,7 +12,7 @@ public class HomePage extends PageBase{
 	}
 	
 	public SearchPage searchFor(String keyword){
-        WebElement search_field = this._driver.findElement(By.id("search"));
+        WebElement search_field = this._driver.findElement(By.id("query"));
         search_field.sendKeys(keyword);
         search_field.submit();
 
