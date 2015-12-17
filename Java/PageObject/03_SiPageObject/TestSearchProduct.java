@@ -1,13 +1,9 @@
-package sipageobject;
-
-import java.util.List;
+package 03_SiPageObject;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import sipageobject.HomePage;
@@ -21,7 +17,7 @@ public class TestSearchProduct {
 	public void SetUp() {
 		driver = new FirefoxDriver();
 		driver.manage().window().maximize();
-		driver.get("http://demo.magentocommerce.com/");
+		driver.get("http://www.mercadolibre.com.ar/");
 	}
 	
 	@Test
@@ -29,42 +25,21 @@ public class TestSearchProduct {
 
 		HomePage homePage = new HomePage(driver);
 		
-		SearchPage searchPage = homePage.searchFor("phones");
+		SearchPage searchPage = homePage.searchFor("telefonos");
 		
-		assert 2 == searchPage.getCantResultados();
+		assert 50 == searchPage.getCantResultados();
 	}
 
 	@Test
-	public void testSearchByProduct() {
+	public void testSearchByName() {
 
-		WebElement searchField = driver.findElement(By.id("search"));
+		HomePage homePage = new HomePage(driver);
 		
-		searchField.sendKeys("Oxford");
+		SearchPage searchPage = homePage.searchFor("software testing: fundamental principles and essential know");
 		
-		searchField.submit();
-		//driver.findElement(By.className("search-button")).click();
-		
-		List<WebElement> products = driver.findElements(By.cssSelector(".product-name a"));
-		
-		assert products.size() == 2;
+		assert 1 == searchPage.getCantResultados();
 	}
 
-	@Test
-	public void testNoResults() {
-
-		WebElement searchField = driver.findElement(By.id("search"));
-		
-		searchField.sendKeys("accesories");
-		
-		searchField.submit();
-		//driver.findElement(By.className("search-button")).click();
-		
-		List<WebElement> products = driver.findElements(By.cssSelector(".product-name a"));
-		
-		assert products.size() == 0;
-	}
-
-	
 	@After
 	public void TearDown() {
 		driver.quit();
