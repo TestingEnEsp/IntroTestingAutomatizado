@@ -30,16 +30,6 @@ public class TestSearchProduct {
 		assert 50 == searchPage.getCantResultados();
 	}
 
-	@Test
-	public void testSearchByName() {
-
-		HomePage homePage = new HomePage(driver);
-		
-		SearchPage searchPage = homePage.searchFor("software testing: fundamental principles and essential know");
-		
-		assert 1 == searchPage.getCantResultados();
-	}
-
 	@After
 	public void TearDown() {
 		driver.quit();
