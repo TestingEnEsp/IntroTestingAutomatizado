@@ -1,4 +1,4 @@
-package saucelabs;
+package 07_SauceLabs;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -29,7 +29,7 @@ public class TestBase {
                 capabilities);
 
 		driver.manage().window().maximize();
-		driver.get("http://demo.magentocommerce.com/");
+		driver.get("http://www.mercadolibre.com.ar/");
 	}
 	
 	@After
