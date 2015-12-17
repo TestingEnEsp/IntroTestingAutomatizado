@@ -1,4 +1,4 @@
-package mastests;
+package 04_MasTests;
 
 import org.junit.After;
 import org.junit.Before;
@@ -6,8 +6,8 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import mastests.HomePage;
-import mastests.SearchPage;
+import sipageobject.HomePage;
+import sipageobject.SearchPage;
 
 public class TestSearchProduct {
 
@@ -17,7 +17,7 @@ public class TestSearchProduct {
 	public void SetUp() {
 		driver = new FirefoxDriver();
 		driver.manage().window().maximize();
-		driver.get("http://demo.magentocommerce.com/");
+		driver.get("http://www.mercadolibre.com.ar/");
 	}
 	
 	@Test
@@ -25,32 +25,21 @@ public class TestSearchProduct {
 
 		HomePage homePage = new HomePage(driver);
 		
-		SearchPage searchPage = homePage.searchFor("phones");
+		SearchPage searchPage = homePage.searchFor("telefonos");
 		
-		assert 2 == searchPage.getCantResultados();
+		assert 50 == searchPage.getCantResultados();
 	}
 
 	@Test
-	public void testSearchByProduct() {
+	public void testSearchByName() {
 
 		HomePage homePage = new HomePage(driver);
 		
-		SearchPage searchPage = homePage.searchFor("Oxford");
+		SearchPage searchPage = homePage.searchFor("software testing: fundamental principles and essential know");
 		
-		assert 3 == searchPage.getCantResultados();
+		assert 1 == searchPage.getCantResultados();
 	}
 
-	@Test
-	public void testNoResults() {
-
-		HomePage homePage = new HomePage(driver);
-		
-		SearchPage searchPage = homePage.searchFor("accesories");
-		
-		assert 0 == searchPage.getCantResultados();
-	}
-
-	
 	@After
 	public void TearDown() {
 		driver.quit();
