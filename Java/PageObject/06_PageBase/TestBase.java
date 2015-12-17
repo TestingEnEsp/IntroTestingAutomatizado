@@ -1,4 +1,4 @@
-package pagebase;
+package 06_PageBase;
 
 import org.junit.After;
 import org.junit.Before;
@@ -13,7 +13,7 @@ public class TestBase {
 	public void SetUp() {
 		driver = new FirefoxDriver();
 		driver.manage().window().maximize();
-		driver.get("http://demo.magentocommerce.com/");
+		driver.get("http://www.mercadolibre.com.ar/");
 	}
 	
 	@After
