@@ -12,7 +12,7 @@ public class SearchPage {
 	}
 	
 	public int getCantResultados(){
-		return this._driver.findElements(By.cssSelector(".product-name a")).size();
+		return this._driver.findElements(By.cssSelector("#searchResults>li")).size();
 	}
 
 }
